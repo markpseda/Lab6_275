@@ -58,27 +58,19 @@ Run `git status` before and after each of these commands.
 
 1.  What kind of information does `git status` report?
 
-    ```
-
-
-
-    ```
+    It tells you which files are present but not staged, as well as any changes that have been made to staged files.
+	After commiting, it tells you that you are ahead of master, and that there are no unstaged changes.
+	Git status does not report anything different after git log - git log shows each of the committs in the past.
 
 2.  What does `git add names.txt` do?
 
-    ```
-
-
-
-    ```
+    It makes the names.txt file become a tracked file - git wil know when changes are made to it and will
+	include these changes in any future commits. 
 
 3.  What does `git commit -m "Add our names."` do?
 
-    ```
-
-
-
-    ```
+    Git commit creates a "snapshot" of the current state of the local repository and saves these changes to
+	be placed on the remote repository when git push is used later.
 
 Use a plain text editor to create the following files:
 
@@ -95,36 +87,20 @@ Run `git status` before and after each of these commands.
 
 4.  What does `git add .` do? What do you think `.` means?
 
-    ```
-
-
-
-    ```
+    It tracks the files in the current working directory. "." means current working directory in Unix.
 
 5.  What does `git commit` (without -m) do?
 
-    ```
-
-
-
-    ```
+    It begins the commit, but needs a message to proceed, so git opens vim so a message can be added.
 
 6.  If you want to write a more detailed commit message (which is
     good practice) what command would you use?
 
-    ```
-
-
-
-    ```
+    You would use commit without the -m so you can format a longer message properly in the text editor.
 
 7.  What does `git log do`?
 
-    ```
-
-
-
-    ```
+    Git log shows all of the previous committs and details about each (including the current HEAD)
 
 
 H. Stage/Cache/Index
@@ -151,51 +127,27 @@ Run the following commands:
 
     **Staged**
 
-    ```
-
-
-
-    ```
+    names.txt
 
     **Unstaged**
 
-    ```
-
-
-
-    ```
+    movies.txt
 
     **Untracked**
 
-    ```
-
-
-
-    ```
+    foods.txt
 
 1.  If you run `git commit` what changes will be committed (***DON’T DO IT***)?
 
-    ```
-
-
-
-    ```
+    Only names.txt
 
 2.  What command do you run to stage changes?
 
-    ```
-
-
-
-    ```
+    git add
 
 3.  What command do you run to unstage changes?
 
-    ```
-
-
-
-    ```
+    git reset
 
 Run the following commands:
 
@@ -204,48 +156,33 @@ Run the following commands:
 
 1.  What does `git diff` display?
 
-    ```
-
-
-
-    ```
+    Git diff shows the unstaged changes. Does not show untracked files' changes.
 
 2.  What does `git diff --cached` display?
+	
+	Shows the staged changes. Does not show untracked files' changes.
 
-    ```
-
-
-
-    ```
 
 3.  Formulate a sequence of commands to unstage changes to `names.txt`,
     and stage the changes to `movies.txt`. Write them here. Execute your commands and
     confirm they worked.
 
-    ```
-
-
-
-    ```
+    git reset names.txt
+	git add movies.txt
+	
+	They worked.
 
 4.  Edit `movies.txt`, change any one of the movies, and save it. Then
     run `git status`. What do you observe? Explain what you think is
     going on.
 
-    ```
-
-
-
-    ```
+    There are staged movie changes and unstaged movie changes. The stages changes are the ones
+	made earlier, and the unstaged changes are the ones that were just made now.
 
 5.  Delete `names.txt`. Then run `git status`. What do you observe?
     Explain what you think is going on.
 
-    ```
-
-
-
-    ```
+    Same as before - the staged changes from before still show up, and the deletion is unstaged. 
 
 6.  Rename `movies.txt` to `last-movies`. Run `git status`. Observe
     and explain.
