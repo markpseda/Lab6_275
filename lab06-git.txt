@@ -186,40 +186,33 @@ Run the following commands:
 
 6.  Rename `movies.txt` to `last-movies`. Run `git status`. Observe
     and explain.
-
-    ```
-
-
-
-    ```
+	Git status says that movies.txt has been deleted and there is an untracked file called
+	last-movies.txt. Because git tracks files based on their name, it is not aware of the 
+	continuity between movies.txt and last-movies.txt. Git only knows a file was deleted and 
+	added.
+    
 
 7.  Formulate a sequence of commands to stage all changes including the
     untracked file and commit (with any reasonable message you like).
     Execute them.
 
-    ```
-
-
-
-    ```
+	git add *
+	git commit -m "Using git add * will stage all files!"
+	
+	Note: git add * stages all changes in your directory, git add -A does all in all directories!
+	
 
 8.  In git vernacular, `index`, `cache`, and `stage` all refer to the
     same thing. What does it hold?
 
-    ```
-
-
-
-    ```
+    These terms refer to changes to files that are tracked and ready to be commited. 
 
 9.  Why have a `stage`? Why not just commit all changes since the last
     commit?
 
-    ```
-
-
-
-    ```
+    Sometimes you may only want to add some of your changes to the remote repository.
+	Say you had a code review, 1 file was good to go, but another needed work, you
+	could just stage and commit the file that is ready while you work on the other. 
 
 I. Undo
 -------
@@ -234,11 +227,7 @@ Run the following commands:
 
 1.  What does `git reset --soft ``"HEAD^" `do?
 
-    ```
-
-
-
-    ```
+    Goes "back in time" to the status of the repository just prior to the last commit.
 
 Run the following commands:
 
@@ -251,34 +240,21 @@ Run the following commands:
 
 1.  What does `git reset --hard ``"HEAD^"`` `do?
 
-    ```
-
-
-
-    ```
+    It goes back to the the state of the previous commit before any changes were added or staged.
 
 2.  What is the difference between `--hard` and `--soft`?
 
-    ```
-
-
-
-    ```
+    --Hard goes to the state of the last commit when it was freshly commited. --Soft goes back
+	to the last commit, late, right before the next commit. 
 
 3.  What do you think `HEAD` means?
 
-    ```
-
-
-    ```
+    Referencing the current commit you are in.
 
 4.  What do you think `HEAD^` means?
 
-    ```
-
-
-    ```
-
+    Referencing the previous commit from the one you are in. 
+	
 5.  On Canvas, put two things: 1) a link to your repo (as a comment on the assignment), and 2) submit this document.
 
 6. Push this document, completed, to your repo.
